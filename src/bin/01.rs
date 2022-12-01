@@ -7,7 +7,7 @@ fn calculate(input: &str) -> Vec<u32> {
     let mut sums: Vec<u32> = vec![];
 
     for line in lines {
-        if line == "" {
+        if line.is_empty() {
             sums.push(current);
             current = 0;
         } else {
