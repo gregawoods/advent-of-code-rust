@@ -1,40 +1,40 @@
-use advent_of_code::helpers::vec_of_numbers;
+use advent_of_code::helpers::{vec_of_strings};
+use itertools::max;
+
+fn calculate(input: &str) -> Vec<u32> {
+    let lines = vec_of_strings(input);
+    let mut current = 0;
+    let mut sums: Vec<u32> = vec![];
+
+    for line in lines {
+        if line == "" {
+            sums.push(current);
+            current = 0;
+        } else {
+            current += line.parse::<u32>().unwrap();
+        }
+    }
+
+    sums.push(current);
+    sums
+}
 
 pub fn part_one(input: &str) -> Option<u32> {
-    let numbers = vec_of_numbers(input);
-    Some(calculate(numbers))
+    max(calculate(input))
 }
 
 pub fn part_two(input: &str) -> Option<u32> {
-    let numbers = vec_of_numbers(input);
+    let mut sums = calculate(input);
+    sums.sort();
+    
+    let mut total = 0;
 
-    let mut last1 = 0;
-    let mut last2 = 0;
-    let mut sums: Vec<u32> = vec![];
-
-    for n in numbers {
-        if last1 != 0 && last2 != 0 {
-            sums.push(last1 + last2 + n);
-        }
-        last1 = last2;
-        last2 = n;
+    for _i in 0..3 {
+        let n = sums.pop().unwrap();
+        total += n;
     }
 
-    Some(calculate(sums))
-}
-
-fn calculate(numbers: Vec<u32>) -> u32 {
-    let mut last: u32 = 0;
-    let mut sum: u32 = 0;
-
-    for n in numbers {
-        if last != 0 && n > last {
-            sum += 1
-        }
-        last = n
-    }
-
-    sum
+    Some(total)
 }
 
 fn main() {
@@ -50,12 +50,12 @@ mod tests {
     #[test]
     fn test_part_one() {
         let input = advent_of_code::read_file("examples", 1);
-        assert_eq!(part_one(&input), Some(7));
+        assert_eq!(part_one(&input), Some(24000));
     }
 
     #[test]
     fn test_part_two() {
         let input = advent_of_code::read_file("examples", 1);
-        assert_eq!(part_two(&input), Some(5));
+        assert_eq!(part_two(&input), Some(45000));
     }
 }

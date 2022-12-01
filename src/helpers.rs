@@ -6,8 +6,6 @@
 pub fn vec_of_strings(input: &str) -> Vec<&str> {
     let lines: Vec<&str> = input.split('\n').map(|str| {
         str.trim()
-    }).filter(|str| {
-        str != &""
     }).collect();
 
     lines
