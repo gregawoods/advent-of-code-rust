@@ -2,7 +2,7 @@ use advent_of_code::helpers::vec_of_numbers;
 
 pub fn part_one(input: &str) -> Option<u32> {
     let numbers = vec_of_numbers(input);
-    return Some(calculate(numbers));
+    Some(calculate(numbers))
 }
 
 pub fn part_two(input: &str) -> Option<u32> {
@@ -20,7 +20,7 @@ pub fn part_two(input: &str) -> Option<u32> {
         last2 = n;
     }
 
-    return Some(calculate(sums));
+    Some(calculate(sums))
 }
 
 fn calculate(numbers: Vec<u32>) -> u32 {
@@ -34,7 +34,7 @@ fn calculate(numbers: Vec<u32>) -> u32 {
         last = n
     }
 
-    return sum;
+    sum
 }
 
 fn main() {

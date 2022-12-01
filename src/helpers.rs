@@ -4,19 +4,19 @@
  */
 
 pub fn vec_of_strings(input: &str) -> Vec<&str> {
-    let lines: Vec<&str> = input.split("\n").map(|str| {
-        return str.trim()
+    let lines: Vec<&str> = input.split('\n').map(|str| {
+        str.trim()
     }).filter(|str| {
-        return str != &""
+        str != &""
     }).collect();
 
-    return lines;
+    lines
 }
 
 pub fn vec_of_numbers(input: &str) -> Vec<u32> {
     let strings = vec_of_strings(input);
 
     return strings.iter().map(|str| {
-        return str.parse().unwrap()
+        str.parse().unwrap()
     }).collect();
 }
