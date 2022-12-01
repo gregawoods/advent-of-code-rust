@@ -1,9 +1,40 @@
+use advent_of_code::helpers::vec_of_numbers;
+
 pub fn part_one(input: &str) -> Option<u32> {
-    None
+    let numbers = vec_of_numbers(input);
+    return Some(calculate(numbers));
 }
 
 pub fn part_two(input: &str) -> Option<u32> {
-    None
+    let numbers = vec_of_numbers(input);
+
+    let mut last1 = 0;
+    let mut last2 = 0;
+    let mut sums: Vec<u32> = vec![];
+
+    for n in numbers {
+        if last1 != 0 && last2 != 0 {
+            sums.push(last1 + last2 + n);
+        }
+        last1 = last2;
+        last2 = n;
+    }
+
+    return Some(calculate(sums));
+}
+
+fn calculate(numbers: Vec<u32>) -> u32 {
+    let mut last: u32 = 0;
+    let mut sum: u32 = 0;
+
+    for n in numbers {
+        if last != 0 && n > last {
+            sum += 1
+        }
+        last = n
+    }
+
+    return sum;
 }
 
 fn main() {
@@ -19,12 +50,12 @@ mod tests {
     #[test]
     fn test_part_one() {
         let input = advent_of_code::read_file("examples", 1);
-        assert_eq!(part_one(&input), None);
+        assert_eq!(part_one(&input), Some(7));
     }
 
     #[test]
     fn test_part_two() {
         let input = advent_of_code::read_file("examples", 1);
-        assert_eq!(part_two(&input), None);
+        assert_eq!(part_two(&input), Some(5));
     }
 }
