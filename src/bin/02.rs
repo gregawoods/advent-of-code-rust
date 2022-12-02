@@ -12,10 +12,6 @@ pub fn part_one(input: &str) -> Option<u32> {
     ]);
 
     for line in lines {
-        if line.is_empty() {
-            break;
-        }
-
         let parts: Vec<&str> = line.split(' ').collect();
         let left = parts[0];
         let right = parts[1];
@@ -64,10 +60,6 @@ pub fn part_two(input: &str) -> Option<u32> {
     ]);
 
     for line in lines {
-        if line.is_empty() {
-            break;
-        }
-
         let parts: Vec<&str> = line.split(' ').collect();
         let left = parts[0];
         let right = parts[1];

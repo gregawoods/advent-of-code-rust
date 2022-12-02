@@ -4,9 +4,13 @@
  */
 
 pub fn vec_of_strings(input: &str) -> Vec<&str> {
-    let lines: Vec<&str> = input.split('\n').map(|str| {
+    let mut lines: Vec<&str> = input.split('\n').map(|str| {
         str.trim()
     }).collect();
+
+    if lines.last().unwrap() == &"" {
+        lines.pop();
+    }
 
     lines
 }
