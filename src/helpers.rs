@@ -22,3 +22,10 @@ pub fn vec_of_numbers(input: &str) -> Vec<u32> {
         str.parse().unwrap()
     }).collect();
 }
+
+pub fn index_of_substring(haystack: &str, needle: &str) -> u32 {
+    let index = haystack.find(needle).unwrap();
+    
+
+    u32::try_from(index).unwrap()
+}
