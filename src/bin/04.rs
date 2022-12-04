@@ -19,7 +19,7 @@ pub fn part_one(input: &str) -> Option<u32> {
     Some(count)
 }
 
-fn range_intersects(a: RangeInclusive<u32>, b: RangeInclusive<u32>) -> bool {
+fn range_intersects<T: PartialOrd>(a: RangeInclusive<T>, b: RangeInclusive<T>) -> bool {
     a.contains(b.start()) || a.contains(b.end()) || b.contains(a.start()) || b.contains(a.end())
 }
 
