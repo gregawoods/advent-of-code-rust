@@ -1,7 +1,6 @@
-use std::ops::RangeInclusive;
-
 use advent_of_code::helpers::vec_of_strings;
 use regex::Regex;
+use std::ops::RangeInclusive;
 
 pub fn part_one(input: &str) -> Option<u32> {
     let lines = vec_of_strings(input);
@@ -11,7 +10,9 @@ pub fn part_one(input: &str) -> Option<u32> {
     for line in lines {
         let numbers: Vec<u32> = regex.split(line).map(|str| str.parse().unwrap()).collect();
 
-        if numbers[0] <= numbers[2] && numbers[1] >= numbers[3] || numbers[0] >= numbers[2] && numbers[1] <= numbers[3] {
+        if numbers[0] <= numbers[2] && numbers[1] >= numbers[3]
+            || numbers[0] >= numbers[2] && numbers[1] <= numbers[3]
+        {
             count += 1;
         }
     }

@@ -4,9 +4,17 @@
  */
 
 pub fn vec_of_strings(input: &str) -> Vec<&str> {
-    let mut lines: Vec<&str> = input.split('\n').map(|str| {
-        str.trim()
-    }).collect();
+    let mut lines: Vec<&str> = input.split('\n').map(|str| str.trim()).collect();
+
+    if lines.last().unwrap() == &"" {
+        lines.pop();
+    }
+
+    lines
+}
+
+pub fn vec_of_strings_no_trim(input: &str) -> Vec<&str> {
+    let mut lines: Vec<&str> = input.split('\n').collect();
 
     if lines.last().unwrap() == &"" {
         lines.pop();
@@ -18,14 +26,11 @@ pub fn vec_of_strings(input: &str) -> Vec<&str> {
 pub fn vec_of_numbers(input: &str) -> Vec<u32> {
     let strings = vec_of_strings(input);
 
-    return strings.iter().map(|str| {
-        str.parse().unwrap()
-    }).collect();
+    return strings.iter().map(|str| str.parse().unwrap()).collect();
 }
 
 pub fn index_of_substring(haystack: &str, needle: &str) -> u32 {
     let index = haystack.find(needle).unwrap();
-    
 
     u32::try_from(index).unwrap()
 }

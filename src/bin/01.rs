@@ -1,4 +1,4 @@
-use advent_of_code::helpers::{vec_of_strings};
+use advent_of_code::helpers::vec_of_strings;
 use itertools::max;
 
 fn calculate(input: &str) -> Vec<u32> {
@@ -26,7 +26,7 @@ pub fn part_one(input: &str) -> Option<u32> {
 pub fn part_two(input: &str) -> Option<u32> {
     let mut sums = calculate(input);
     sums.sort();
-    
+
     let mut total = 0;
 
     for _i in 0..3 {

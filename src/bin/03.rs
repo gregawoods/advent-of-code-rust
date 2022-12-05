@@ -1,16 +1,16 @@
-use advent_of_code::helpers::{vec_of_strings, index_of_substring};
+use advent_of_code::helpers::{index_of_substring, vec_of_strings};
 use array_tool::vec::Intersect;
 
-static ALPHABET:&str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+static ALPHABET: &str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 pub fn part_one(input: &str) -> Option<u32> {
     let lines = vec_of_strings(input);
-    let mut sum:u32 = 0;
+    let mut sum: u32 = 0;
 
     for line in lines {
         let len = line.chars().count() / 2;
-        let left:Vec<char> = line[..len].chars().collect();
-        let right:Vec<char> = line[len..].chars().collect();
+        let left: Vec<char> = line[..len].chars().collect();
+        let right: Vec<char> = line[len..].chars().collect();
         let result = left.intersect(right).first().unwrap().to_string();
 
         sum += 1 + index_of_substring(ALPHABET, &result)
@@ -21,15 +21,18 @@ pub fn part_one(input: &str) -> Option<u32> {
 
 pub fn part_two(input: &str) -> Option<u32> {
     let lines = vec_of_strings(input);
-    let mut sum:u32 = 0;
+    let mut sum: u32 = 0;
 
     for chunk in lines.chunks(3) {
         let str_a: Vec<char> = chunk[0].chars().collect();
         let str_b: Vec<char> = chunk[1].chars().collect();
         let str_c: Vec<char> = chunk[2].chars().collect();
-        let result = str_a.intersect(str_b)
-                                  .intersect(str_c)
-                                  .first().unwrap().to_string();
+        let result = str_a
+            .intersect(str_b)
+            .intersect(str_c)
+            .first()
+            .unwrap()
+            .to_string();
 
         sum += 1 + index_of_substring(ALPHABET, &result)
     }

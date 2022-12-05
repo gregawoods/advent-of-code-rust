@@ -5,11 +5,7 @@ pub fn part_one(input: &str) -> Option<u32> {
     let lines = vec_of_strings(input);
     let mut score = 0;
 
-    let point_values = HashMap::from([
-        ("X", 1),
-        ("Y", 2),
-        ("Z", 3)
-    ]);
+    let point_values = HashMap::from([("X", 1), ("Y", 2), ("Z", 3)]);
 
     for line in lines {
         let parts: Vec<&str> = line.split(' ').collect();
@@ -53,11 +49,7 @@ pub fn part_two(input: &str) -> Option<u32> {
     let lines = vec_of_strings(input);
     let mut score = 0;
 
-    let point_values = HashMap::from([
-        ("X", 0),
-        ("Y", 3),
-        ("Z", 6)
-    ]);
+    let point_values = HashMap::from([("X", 0), ("Y", 3), ("Z", 6)]);
 
     for line in lines {
         let parts: Vec<&str> = line.split(' ').collect();
