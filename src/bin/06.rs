@@ -4,8 +4,8 @@ fn calculate(input: &str, limit: usize) -> Option<u32> {
     let mut list: Vec<char> = vec![];
     let mut result: u32 = 0;
 
-    for (index, char) in input.chars().collect::<Vec<char>>().iter().enumerate() {
-        list.push(*char);
+    for (index, char) in input.chars().enumerate() {
+        list.push(char);
 
         if list.len() > limit {
             list.shift();
